@@ -1,0 +1,53 @@
+body.debug {
+
+  animal-item {
+
+    &:before {
+
+      content: attr( data-face );
+
+      --debugSz: 5px;
+
+      position: absolute;
+
+      width: var( --debugSz );
+      height: var( --debugSz );
+
+      background-color: white;
+      border-radius: 100vmax;
+    }
+
+    &[ data-face = '000' ]:before {
+      top: 0;
+      left: calc( 50% - var( --debugSz ) * 0.5   );
+    }
+    &[ data-face = '045' ]:before {
+      top: 0;
+      left: calc( 100% - var( --debugSz ) );
+    }
+    &[ data-face = '090' ]:before {
+      top: calc( 50% - var( --debugSz ) * 0.5 );
+      left: calc( 100% - var( --debugSz ) );
+    }
+    &[ data-face = '135' ]:before {
+      top: calc( 100% - var( --debugSz ) );
+      left: calc( 100% - var( --debugSz ) );
+    }
+    &[ data-face = '180' ]:before {
+      top: calc( 100% - var( --debugSz ) );
+      left: calc( 50% - var( --debugSz ) * 0.5 );
+    }
+    &[ data-face = '225' ]:before {
+      top: calc( 100% - var( --debugSz ) );
+      left: 0;
+    }
+    &[ data-face = '270' ]:before {
+      top: calc( 50% - var( --debugSz ) * 0.5 );
+      left: 0;
+    }
+    &[ data-face = '315' ]:before {
+      top: 0;
+      left: 0;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+body.daynightcycle {
+
+  animation-name: daynightcycle;
+  animation-duration: 96000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  --minBri: 0.5;
+  --maxBri: 1.5;
+
+  --minSat: 0.5;
+  --maxSat: 1.5;
+
+  --minHue: 60deg;
+  --maxHue: -20deg;
+
+}
+
+@keyframes daynightcycle {
+  000% { filter: brightness( var( --maxBri ) ) saturate( var( --maxSat ) ) hue-rotate( var( --maxHue ) ); }
+  050% { filter: brightness( var( --minBri ) ) saturate( var( --minSat ) ) hue-rotate( var( --minHue ) ); }
+  100% { filter: brightness( var( --maxBri ) ) saturate( var( --maxSat ) ) hue-rotate( var( --maxHue ) ); }
+}
