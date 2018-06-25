@@ -1,0 +1,45 @@
+animal-item.munch {
+  talk-item {
+    opacity: 1;
+    &:after {
+      content: ': 3';
+    }
+  }
+}
+
+animal-item.heart {
+  talk-item {
+    opacity: 1;
+    &:after {
+      color: red;
+      font-size: 200%;
+      content: '♥';
+    }
+  }
+}
+
+animal-item.sleep {
+  talk-item {
+    opacity: 1;
+    &:after {
+      content: 'zZz';
+    }
+  }
+}
+
+animal-item.scoot {
+
+  animation-name: scoot;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  transform-origin: 50% 100%;
+}
+
+@keyframes scoot {
+  000% { transform: rotateZ( 0deg ); }
+  025% { transform: rotateZ( -5deg ); }
+  075% { transform: rotateZ( 5deg ); }
+  100% { transform: rotateZ( 0deg ); }
+}

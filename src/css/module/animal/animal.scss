@@ -1,0 +1,82 @@
+animal-item {
+
+  position: absolute;
+  display: block;
+  z-index: 10;
+
+  height: var( --size );
+  width: var( --size );
+
+  margin-top: calc( var( --size ) * -1 );
+  margin-left: calc( var( --size ) * -0.5 );
+
+  *, *:before, *:after {
+
+    --width: 100%;
+    --posX: 0;
+
+    --minP: calc( 0% - var( --width ) );
+    --maxP: 100%;
+    --difP: calc( var( --maxP ) - var( --minP ) );
+    --lefP: calc( ( var( --posX ) * var( --difP ) ) + var( --minP ) );
+
+    --minB: 0%;
+    --maxB: calc( 100% - var( --width ) );
+    --difB: calc( var( --maxB ) - var( --minB ) );
+    --lefB: calc( ( var( --posX ) * var( --difB ) ) + var( --minB ) );
+
+    --zindexF: calc( var( --isFaceView ) * 10 );
+    --zindexB: calc( var( --isFaceView ) * -10 );
+
+    width: var( --width );
+
+    display: block;
+    position: absolute;
+
+    background-color: inherit;
+
+    transition-duration: 500ms;
+    transition-property: all;
+  }
+
+  talk-item {
+
+    bottom: 110%;
+    left: 12.5%;
+
+    width: 75%;
+    height: 75%;
+
+    background-color: white;
+    border-radius: 100vmax;
+
+    opacity: 0;
+
+    color: black;
+
+    &:before {
+
+      content: '';
+
+      top: 80%;
+      left: 37.5%;
+
+      z-index: -1;
+
+      width: 25%;
+      height: 25%;
+
+      transform: rotateZ( 45deg );
+      border-radius: 0;
+    }
+
+    &:after {
+
+      top: calc( 50% - 0.5em );
+      width: 100%;
+
+      text-align: center;
+      background-color: transparent;
+    }
+  }
+}

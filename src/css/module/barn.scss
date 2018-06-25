@@ -1,0 +1,233 @@
+barn-item {
+
+  --hue: 000;
+  --color: hsla( var( --hue ), 050%, 040%, 1.0 );
+  --shade: hsla( var( --hue ), 050%, 035%, 1.0 );
+  --size: 20vmin;
+
+  position: absolute;
+  display: block;
+
+  height: var( --size );
+  width: calc( var( --size ) * 2 );
+
+  margin-top: calc( var( --size ) * -1 );
+  margin-left: calc( var( --size ) * -1 );
+
+  *, *:before, *:after {
+
+    display: block;
+    position: absolute;
+
+    background-color: var( --color );
+    box-sizing: border-box;
+  }
+}
+
+face-item {
+
+  bottom: 0;
+
+  width: 50%;
+  height: 95%;
+
+  background-color: white;
+  clip-path: polygon(
+    50% 0%,
+    85% 15%,
+    100% 50%,
+    100% 100%,
+    0% 100%,
+    0% 50%,
+    15% 15%
+  );
+
+  &:before {
+
+    content: '';
+
+    bottom: 0;
+    right: 2%;
+
+    width: 96%;
+    height: 98%;
+
+    clip-path: inherit;
+    background: repeating-linear-gradient(
+      0deg,
+      var( --shade ) 0%,
+      var( --shade ) 1px, var( --color ) 1px,
+      var( --color ) 2.5%
+    );
+  }
+}
+
+wall-item {
+
+  --window: 16.666%;
+
+  right: 0;
+  bottom: 0;
+
+  width: 50%;
+  height: 47.5%;
+
+  border-right: calc( var( --size ) * 0.025 ) solid white;
+  background: repeating-linear-gradient(
+    0deg,
+    var( --shade ) 0%,
+    var( --shade ) 1px, var( --color ) 1px,
+    var( --color ) 5%
+  );
+
+  &:before {
+
+    content: '';
+
+    top: 25%;
+    left: 10%;
+
+    width: 80%;
+    height: 25%;
+
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent calc( var( --window ) * 0.1 ), white calc( var( --window ) * 0.1 ),
+      white calc( var( --window ) * 0.3 ), orange calc( var( --window ) * 0.3 ),
+      orange calc( var( --window ) * 0.4 ), white calc( var( --window ) * 0.4 ),
+      white calc( var( --window ) * 0.5 ), orange calc( var( --window ) * 0.5 ),
+      orange calc( var( --window ) * 0.6 ), white calc( var( --window ) * 0.6 ),
+      white calc( var( --window ) * 0.8 ), transparent calc( var( --window ) * 0.8 ),
+      transparent var( --window )
+    );
+  }
+  &:after {
+
+    content: '';
+
+    top: 50%;
+    left: 10%;
+
+    width: 80%;
+    height: 2.5%;
+
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0%, white calc( var( --window ) * 0.05 ),
+      white calc( var( --window ) * 0.9 ), transparent calc( var( --window ) * 0.9 ),
+      transparent var( --window )
+    );
+  }
+}
+
+roof-item {
+
+  filter: saturate( 0 ) brightness( 2 );
+  transform-origin: 50% 100%;
+
+  background: repeating-linear-gradient(
+    0deg,
+    var( --shade ) 0%,
+    var( --shade ) 1px, var( --color ) 1px,
+    var( --color ) 5%
+  );
+}
+
+roof-item:nth-of-type( 1 ) {
+
+  top: calc( 5% + ( 15% * 0.9 ) );
+  left: 51%;
+
+  width: 50%;
+  height: 38%;
+
+  transform: skewX( 24deg );
+}
+
+roof-item:nth-of-type( 2 ) {
+
+  top: 5%;
+  left: 42%;
+
+  width: 51%;
+  height: 14%;
+
+  transform: skewX( 68deg );
+}
+
+door-item {
+
+  bottom: 0;
+  left: 30%;
+
+  width: 35%;
+  height: 35%;
+
+  background-color: black;
+  border-top: calc( var( --size ) * 0.025 ) white solid;
+
+  &:before {
+
+    content: '';
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var( --color );
+    border: calc( var( --size ) * 0.025 ) white solid;
+  }
+
+  &:after {
+
+    content: '';
+
+    bottom: 0;
+    left: 35%;
+
+    width: 5%;
+    height: 100%;
+
+    background-color: white;
+  }
+}
+
+loft-item {
+
+  bottom: 55%;
+  left: 30%;
+
+  width: 35%;
+  height: 30%;
+
+  background-color: black;
+
+  &:before {
+
+    content: '';
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var( --color );
+    border: calc( var( --size ) * 0.025 ) white solid;
+  }
+  &:after {
+
+    content: '';
+
+    bottom: 0;
+    left: 45%;
+
+    width: 5%;
+    height: 100%;
+
+    background-color: white;
+  }
+}

@@ -1,0 +1,19 @@
+@import './base/base.scss';
+
+@import './module/barn.scss';
+@import './module/turf.scss';
+
+@import './module/animal/animal.scss';
+@import './module/animal/direction.scss';
+
+@import './module/animal/alpaca/base.scss';
+@import './module/animal/alpaca/direction.scss';
+
+@import './module/animal/pig/base.scss';
+@import './module/animal/pig/direction.scss';
+
+@import './module/animal/emu/base.scss';
+@import './module/animal/emu/direction.scss';
+
+@import './state/animal/state.scss';
+@import './state/animal/alpaca/state.scss';
