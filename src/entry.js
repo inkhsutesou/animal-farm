@@ -53,7 +53,7 @@ new Pig()
   .setPosition( 45, 75 )
   .setFace( 225 )
   .setHue( 45 )
-  .setName( `pig-brown` )
+  .setName( `pig-yellow` )
   .setBarn( barn )
   .go();
 

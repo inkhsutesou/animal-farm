@@ -30,10 +30,9 @@ function step ( self, ... etc ) {
     xDel = xDes - self.x,
     yDel = yDes - self.y,
 
-    rAng = Math.atan2( xDel, -yDel ), // this works for facing but not for moving
-    dAng = ( 180 - 22.5 ) + ( 57.2957 * rAng ),
-    pAng = dAng - dAng % 45,
-    fAng = pAng === 360 ? 0 : pAng,
+    rAng = Math.atan2( yDel, xDel ),
+    dAng = ( ( 495 - 22.5 ) + ( 57.2957 * rAng ) ) % 360,
+    fAng = dAng - dAng % 45,
 
     face = `00${ fAng }`,
     faceString = face.slice( face.length - 3, face.length ),

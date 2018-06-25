@@ -1,3 +1,5 @@
+var config = require( `./../../config.js` );
+
 function go () {
 
   this
@@ -30,7 +32,7 @@ function go () {
 
   }
 
-  if ( this.isAbleParent && hunger + energy + friend > 2.8 ) {
+  if ( this.isAbleParent && hunger + energy + friend > 2.9 ) {
     console.log( this.name, hunger, energy, friend );
 
     let child = new this.constructor()
@@ -38,10 +40,14 @@ function go () {
       .setFace( 225 )
       .setHue( Math.floor( Math.random() * 360 ) )
       .setName( `${ this.name } ${ this.barn.registeredListStore.animal.length }` )
-      .setBarn( this.barn )
-      .go();
+      .setBarn( this.barn );
+
+    setTimeout( () => child.move( 100 - this.x, 100 - this.y ), config.birthToWalk );
 
     this.setIsAbleParent( false );
+
+    return this
+      .move( 100 - this.x, 100 - this.y );
 
   }
 
