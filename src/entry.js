@@ -10,6 +10,8 @@ var { Alpaca, alpacaList } = require( `./js/class/animal/library/alpaca.js` ),
 
   barn = new Barn();
 
+document.body.classList.add( `daynightcycle` );
+
 new Turf()
   .setGrowth( 0.1 )
   .setPosition( 75, 85 )
