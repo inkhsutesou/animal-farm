@@ -9,6 +9,7 @@ class Turf extends Item {
 
     this.element = new TurfItem();
     this.setGrowth();
+    this.setSize( 2 );
     turfList.push( this );
 
   }

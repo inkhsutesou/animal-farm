@@ -4,15 +4,16 @@ barn-item {
   --color: hsla( var( --hue ), 050%, 040%, 1.0 );
   --shade: hsla( var( --hue ), 050%, 035%, 1.0 );
   --size: 20vmin;
+  --sizeStatic: calc( var( --size ) * 1vmin );
 
   position: absolute;
   display: block;
 
-  height: var( --size );
-  width: calc( var( --size ) * 2 );
+  height: var( --sizeStatic );
+  width: calc( var( --sizeStatic ) * 2 );
 
-  margin-top: calc( var( --size ) * -1 );
-  margin-left: calc( var( --size ) * -1 );
+  margin-top: calc( var( --sizeStatic ) * -1 );
+  margin-left: calc( var( --sizeStatic ) * -1 );
 
   *, *:before, *:after {
 
@@ -72,7 +73,7 @@ wall-item {
   width: 50%;
   height: 47.5%;
 
-  border-right: calc( var( --size ) * 0.025 ) solid white;
+  border-right: calc( var( --sizeStatic ) * 0.025 ) solid white;
   background: repeating-linear-gradient(
     0deg,
     var( --shade ) 0%,
@@ -165,7 +166,7 @@ door-item {
   height: 35%;
 
   background-color: black;
-  border-top: calc( var( --size ) * 0.025 ) white solid;
+  border-top: calc( var( --sizeStatic ) * 0.025 ) white solid;
 
   &:before {
 
@@ -178,7 +179,7 @@ door-item {
     height: 100%;
 
     background-color: var( --color );
-    border: calc( var( --size ) * 0.025 ) white solid;
+    border: calc( var( --sizeStatic ) * 0.025 ) white solid;
   }
 
   &:after {
@@ -216,7 +217,7 @@ loft-item {
     height: 100%;
 
     background-color: var( --color );
-    border: calc( var( --size ) * 0.025 ) white solid;
+    border: calc( var( --sizeStatic ) * 0.025 ) white solid;
   }
   &:after {
 

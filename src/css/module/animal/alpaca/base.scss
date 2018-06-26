@@ -67,7 +67,7 @@ animal-item.alpaca {
 
     tail-item {
 
-      --thick: calc( var( --size ) / 50 );
+      --thick: calc( var( --sizeStatic ) / 50 );
       --maxP: 75%;
       --minP: -10%;
       left: var( --lefP );
@@ -132,7 +132,7 @@ animal-item.alpaca {
 
     nose-item {
 
-      --thick: calc( var( --size ) / 150 );
+      --thick: calc( var( --sizeStatic ) / 150 );
       --separation: calc( 50% - ( var( --thick ) / 2 ) );
 
       top: 55%;
@@ -166,7 +166,7 @@ animal-item.alpaca {
     eyes-item {
 
       --separation: 10%;
-      --thick: calc( var( --size ) / 60 );
+      --thick: calc( var( --sizeStatic ) / 60 );
 
       top: 10%;
 

@@ -189,7 +189,7 @@ animal-item.emu {
     eyes-item {
 
       --separation: 20%;
-      --thick: calc( var( --size ) / 90 );
+      --thick: calc( var( --sizeStatic ) / 90 );
 
       top: 20%;
       z-index: -10;

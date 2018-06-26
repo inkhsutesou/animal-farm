@@ -74,7 +74,7 @@ class Item {
   }
 
   setSize ( size = 20 ) {
-    this.element.style.setProperty( `--size`, `${ size }vmin` );
+    this.element.style.setProperty( `--size`, `${ size }` );
     this.size = size;
     return this;
   }
