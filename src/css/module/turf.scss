@@ -1,9 +1,12 @@
 turf-item {
 
   --size: 2;
-  --width: calc( var( --size ) * 1vmin );
-  --height: calc( var( --size ) * 1vmin );
   --growth: 1;
+  --sizeStatic: calc( var( --size ) * 1vmin );
+
+  --width: var( --sizeStatic );
+  --height: var( --sizeStatic );
+
   --expo: 80%;
   --color: hsla( 090, 065%, 015%, 1.0 );
 
@@ -13,7 +16,6 @@ turf-item {
 
   height: var( --height );
   width: var( --width );
-
 
   margin-top: calc( var( --height ) * -1 );
   margin-left: calc( var( --width ) * -0.5 );
@@ -87,90 +89,3 @@ turf-item {
     border-right: none;
   }
 }
-
-/*
-
-turf-item {
-
-  --width: 4;
-  --height: var( --width );
-  --expo: 80%;
-  --color: hsla( 090, 065%, 015%, 1.0 );
-
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-
-  height: calc( var( --height ) * 5vmin );
-  width: calc( var( --width ) * 5vmin );
-
-  &:before, &:after {
-    content: '';
-
-    animation-name: turf-idle;
-    animation-duration: 5000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-    position: absolute;
-    display: inline-block;
-
-    bottom: -100%;
-
-    height: calc( var( --height ) * 10vmin );
-
-    border-radius: 50% 50% 0 0;
-  }
-  &:after {
-    margin-bottom: calc( var( --height ) * -1vmin );
-    margin-left: calc( var( --width ) * 0.5vmin );
-    animation-delay: 1000ms;
-    filter: saturate( 1.25 ) brightness( 1.25 )
-  }
-}
-
-@keyframes turf-idle {
-  0% {
-    left: calc( 50% - ( var( --width ) * 0.5vmin ) );
-    border-right: none;
-    border-left: var( --color ) solid calc( var( --width ) * 1vmin );
-    width: calc( var( --width ) * 5vmin );
-  }
-  25% {
-    left: calc( 50% - ( var( --width ) * 0.5vmin ) );
-    border-right: none;
-    border-left: var( --color ) solid calc( var( --width ) * 1vmin );
-    width: 0;
-  }
-  25.001% {
-    left: calc( 50% - ( var( --width ) * 0.5vmin ) );
-    border-left: none;
-    border-right: var( --color ) solid calc( var( --width ) * 1vmin );
-    width: 0;
-  }
-  50% {
-    left: calc( -50% - ( var( --width ) * 0.5vmin ) );
-    border-left: none;
-    border-right: var( --color ) solid calc( var( --width ) * 1vmin );
-    width: calc( var( --width ) * 5vmin );
-  }
-  75% {
-    left: calc( 50% - ( var( --width ) * 0.5vmin ) );
-    border-left: none;
-    border-right: var( --color ) solid calc( var( --width ) * 1vmin );
-    width: 0;
-  }
-  75.001% {
-    left: calc( 50% - ( var( --width ) * 0.5vmin ) );
-    border-right: none;
-    border-left: var( --color ) solid calc( var( --width ) * 1vmin );
-    width: 0;
-  }
-  100% {
-    left: calc( 50% - ( var( --width ) * 0.5vmin ) );
-    border-right: none;
-    border-left: var( --color ) solid calc( var( --width ) * 1vmin );
-    width: calc( var( --width ) * 5vmin );
-  }
-}
-*/

@@ -1,0 +1,26 @@
+animal-item.emu.munch {
+  neck-item {
+    bottom: -20%;
+  }
+  head-item {
+    bottom: -50%;
+  }
+  face-item {
+    top: 100%;
+  }
+}
+
+animal-item.emu.heart {}
+animal-item.emu.scoot {}
+
+animal-item.emu.sleep {
+  body-item {
+    top: 50%;
+  }
+  limb-item {
+    height: 20%;
+  }
+  neck-item {
+    bottom: 30%;
+  }
+}

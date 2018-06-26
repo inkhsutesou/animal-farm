@@ -4,7 +4,9 @@ function wander () {
     { localeList } = knowledgeStore,
 
     modX = 0,
-    modY = 0;
+    modY = 0,
+
+    destination;
 
   if ( localeList.length ) {
 
@@ -36,9 +38,14 @@ function wander () {
   modX *= this.__isBeyondBoundary( modX ) ? -1 : 1;
   modY *= this.__isBeyondBoundary( modY ) ? -1 : 1;
 
-  console.log( this.name, `Wandering ..` );
+  destination = this.__withinBounds( modX, modY );
 
-  this.move( ... this.__withinBounds( modX, modY ) );
+  this.log += `
+    Wandering ..
+      ${ JSON.stringify( destination ) }
+  `;
+
+  this.move( ... destination );
 
   return this;
 }

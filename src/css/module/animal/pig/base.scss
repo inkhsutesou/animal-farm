@@ -51,7 +51,7 @@ animal-item.pig {
 
     tail-item {
 
-      --thick: calc( var( --size ) / 50 );
+      --thick: calc( var( --sizeStatic ) / 50 );
 
       left: var( --lefP );
       top: 0;
@@ -163,7 +163,7 @@ animal-item.pig {
     eyes-item {
 
       --separation: 10%;
-      --thick: calc( var( --size ) / 50 );
+      --thick: calc( var( --sizeStatic ) / 50 );
 
       top: 35%;
 
