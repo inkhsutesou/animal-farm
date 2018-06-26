@@ -53,7 +53,10 @@ function step ( self, ... etc ) {
 function move ( ... etc ) {
   this.element.classList.add( `scoot` );
 
-  console.log( this.name, `Moving to .. ${ etc } ` );
+  this.log += `
+    Moving to ..
+      ${ etc.length === 1 ? etc[ 0 ].name : etc }
+  `;
   return step( this, ... etc );
 }
 

@@ -23,7 +23,12 @@ function see () {
       awarenessStore[ key ] = king;
     }
   }
-  console.log( `${ this.name } sees:`, awarenessStore );
+
+  Object
+    .keys( awarenessStore )
+    .forEach( key => this.log += `
+      See .. ${ key }: ${ awarenessStore[ key ] && awarenessStore[ key ].name }
+    ` );
 }
 
 module.exports = { see };

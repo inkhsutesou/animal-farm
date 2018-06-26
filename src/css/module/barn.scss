@@ -1,8 +1,12 @@
 barn-item {
 
   --hue: 000;
-  --color: hsla( var( --hue ), 050%, 040%, 1.0 );
+  --sat: 050%;
+  --lum: 040%;
+
+  --color: hsla( var( --hue ), var( --sat ), var( --lum ), 1.0 );
   --shade: hsla( var( --hue ), 050%, 035%, 1.0 );
+
   --size: 20vmin;
   --sizeStatic: calc( var( --size ) * 1vmin );
 

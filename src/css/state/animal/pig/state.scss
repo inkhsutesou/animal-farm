@@ -1,0 +1,20 @@
+animal-item.pig.munch {
+  neck-item {
+    top: 50%;
+  }
+}
+
+animal-item.pig.heart {}
+animal-item.pig.scoot {}
+
+animal-item.pig.sleep {
+  body-item {
+    top: 50%;
+  }
+  limb-item {
+    height: 20%;
+  }
+  neck-item {
+    top: 40%;
+  }
+}

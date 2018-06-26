@@ -14,6 +14,8 @@ class Item {
     this.x = 0;
     this.y = 0;
 
+    this.log = ``;
+
   }
 
   __directionList ( x, y ) {
@@ -54,6 +56,31 @@ class Item {
 
   }
 
+  __loopCyclelistWithNum ( num, cycleList ) {
+
+    var result = false;
+
+    while ( result === false ) {
+
+      cycleList.some( ( [ min, max ] ) => {
+
+        let diff = max - min;
+
+        if ( num < diff ) {
+          result = min + num;
+          return true;
+        }
+
+        num -= diff;
+
+      } );
+
+    }
+
+    return result;
+
+  }
+
   setPosition ( x = this.x, y = this.y ) {
 
     if ( this.element.parentNode === null ) {
@@ -69,6 +96,27 @@ class Item {
     this.element.style.top = `${ y }%`;
 
     this.element.style.zIndex = Math.floor( y );
+
+    return this;
+  }
+
+  setColor ( hue, sat, lum ) {
+
+    this.hue = typeof hue === `number` ? hue
+      : this.colorStore ? this.__loopCyclelistWithNum( Math.round( Math.random() * 360 ), this.colorStore.hueList )
+      : this.hue;
+
+    this.sat = typeof sat === `number` ? sat
+      : this.colorStore ? this.__loopCyclelistWithNum( Math.round( Math.random() * 360 ), this.colorStore.satList )
+      : this.sat;
+
+    this.lum = typeof lum === `number` ? lum
+      : this.colorStore ? this.__loopCyclelistWithNum( Math.round( Math.random() * 360 ), this.colorStore.lumList )
+      : this.lum || 0;
+
+    this.element.style.setProperty( `--hue`, `${ this.hue }` );
+    this.element.style.setProperty( `--sat`, `${ this.sat }%` );
+    this.element.style.setProperty( `--lum`, `${ this.lum }%` );
 
     return this;
   }

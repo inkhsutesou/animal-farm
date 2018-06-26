@@ -1,11 +1,9 @@
 animal-item.alpaca.munch {
   neck-item {
-    bottom: -65%;
-    left: -17.5%;
+    bottom: -75%;
   }
   head-item {
     top: 65%;
-    left: -50%;
   }
 }
 
@@ -13,6 +11,9 @@ animal-item.alpaca.heart {}
 animal-item.alpaca.scoot {}
 
 animal-item.alpaca.sleep {
+  body-item {
+    top: 60%;
+  }
   limb-item {
     height: 20%;
   }

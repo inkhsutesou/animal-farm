@@ -1,4 +1,8 @@
-var { Item } = require( `./item.js` );
+var { Item } = require( `./item.js` )
+  hueList = [ [ 0, 30 ] ],
+  satList = [ [ 40, 60 ] ],
+  lumList = [ [ 30, 50 ] ],
+  colorStore = { hueList, satList, lumList };
 
 class Barn extends Item {
 
@@ -7,21 +11,16 @@ class Barn extends Item {
     super();
 
     this.element = new BarnItem();
+    this.colorStore = colorStore;
 
     this.name = null;
     this
-      .setHue()
+      .setColor()
       .setSize( 20 );
 
     this.registeredListStore = {};
     this.raised = Date.now();
 
-  }
-
-  setHue ( hue = 0 ) {
-    this.element.style.setProperty( `--hue`, hue );
-    this.color = hue;
-    return this;
   }
 
   registerList ( name, list ) {
