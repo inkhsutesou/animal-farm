@@ -55,6 +55,7 @@ animal-item {
     opacity: 0;
 
     color: black;
+    font-size: calc( var( --sizeStatic ) / 3 );
 
     &:before {
 
