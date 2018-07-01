@@ -43,8 +43,9 @@ function step ( self, ... etc ) {
     xSet = self.x + xMod,
     ySet = self.y + yMod;
 
-  self.element.setAttribute( `data-face`, faceString );
-  self.setPosition( xSet, ySet );
+  self
+    .setFace( faceString )
+    .setPosition( xSet, ySet );
 
   setTimeout( () => step( self, ... etc ), 30 );
 

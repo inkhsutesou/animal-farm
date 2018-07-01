@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.28.11",
+    "hoek": "^4.2.1",
     "jasmine-core": "^3.1.0",
     "karma": "^2.0.4",
     "karma-chrome-launcher": "^2.2.0",

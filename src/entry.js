@@ -31,7 +31,7 @@ new Alpaca()
   .setPosition( 50, 70 )
   .setFace( 225 )
   .setColor()
-  .setName( `alpaca-red` )
+  .setName( `Alfred` )
   .setBarn( barn )
   .go();
 
@@ -39,7 +39,7 @@ new Alpaca()
   .setPosition( 55, 75 )
   .setFace( 225 )
   .setColor()
-  .setName( `alpaca-violet` )
+  .setName( `Alto` )
   .setBarn( barn )
   .go();
 
@@ -47,7 +47,7 @@ new Pig()
   .setPosition( 45, 75 )
   .setFace( 225 )
   .setColor()
-  .setName( `pig-purple` )
+  .setName( `Oswald` )
   .setBarn( barn )
   .go();
 
@@ -55,7 +55,7 @@ new Pig()
   .setPosition( 45, 75 )
   .setFace( 225 )
   .setColor()
-  .setName( `pig-yellow` )
+  .setName( `Ferdinand` )
   .setBarn( barn )
   .go();
 
@@ -63,7 +63,7 @@ new Emu()
   .setPosition( 45, 75 )
   .setFace( 225 )
   .setColor()
-  .setName( `emu-yellow` )
+  .setName( `Droma` )
   .setBarn( barn )
   .go();
 
@@ -71,7 +71,7 @@ new Emu()
   .setPosition( 45, 75 )
   .setFace( 225 )
   .setColor()
-  .setName( `emu-green` )
+  .setName( `Strider` )
   .setBarn( barn )
   .go();
 

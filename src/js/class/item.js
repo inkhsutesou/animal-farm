@@ -7,8 +7,13 @@ class Item {
     this.x = 0;
     this.y = 0;
 
+    this.size = 0;
+
+    this.face = ``;
     this.name = ``;
     this.log = ``;
+
+    this.element = null;
 
   }
 
@@ -78,19 +83,22 @@ class Item {
 
   setPosition ( x = this.x, y = this.y ) {
 
-    if ( this.element.parentNode === null ) {
-      document.body.appendChild( this.element );
-    }
-
     [ x, y ] = this.__withinBounds( x, y );
 
     this.x = x;
     this.y = y;
 
-    this.element.style.left = `${ x }%`;
-    this.element.style.top = `${ y }%`;
+    if ( this.element !== null ) {
 
-    this.element.style.zIndex = Math.floor( y );
+      if ( this.element.parentNode === null ) {
+        document.body.appendChild( this.element );
+      }
+
+      this.element.style.left = `${ x }%`;
+      this.element.style.top = `${ y }%`;
+
+      this.element.style.zIndex = Math.floor( y );
+    }
 
     return this;
   }
@@ -109,21 +117,28 @@ class Item {
       : this.colorStore ? this.__loopCyclelistWithNum( Math.round( Math.random() * 360 ), this.colorStore.lumList )
       : this.lum || 0;
 
-    this.element.style.setProperty( `--hue`, `${ this.hue }` );
-    this.element.style.setProperty( `--sat`, `${ this.sat }%` );
-    this.element.style.setProperty( `--lum`, `${ this.lum }%` );
+    if ( this.element !== null ) {
+      this.element.style.setProperty( `--hue`, `${ this.hue }` );
+      this.element.style.setProperty( `--sat`, `${ this.sat }%` );
+      this.element.style.setProperty( `--lum`, `${ this.lum }%` );
+    }
 
     return this;
   }
 
   setSize ( size = 20 ) {
-    this.element.style.setProperty( `--size`, `${ size }` );
+    if ( this.element !== null ) {
+      this.element.style.setProperty( `--size`, `${ size }` );
+    }
     this.size = size;
     return this;
   }
 
-  setFace ( face = 180 ) {
-    this.element.setAttribute( `data-face`, face );
+  setFace ( face = `180` ) {
+    if ( this.element !== null ) {
+      this.element.setAttribute( `data-face`, face );
+    }
+    this.face = face;
     return this;
   }
 

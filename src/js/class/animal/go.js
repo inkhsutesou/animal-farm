@@ -40,7 +40,7 @@ function go () {
         .setPosition( this.x, this.y )
         .setFace( 225 )
         .setColor()
-        .setName( `${ this.name } ${ this.barn.registeredListStore.animal.length }` )
+        .setName( `Child of ${ this.name }` )
         .setBarn( this.barn );
 
       setTimeout( () => child.move( 100 - this.x, 100 - this.y ), config.birthToWalk );
