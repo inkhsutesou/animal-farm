@@ -9,17 +9,11 @@ class Alpaca extends Animal {
 
   constructor () {
 
-    super();
-
-    this.element.classList.add( `alpaca` );
-    this.colorStore = colorStore;
-    this.relativeList = alpacaList;
+    super( `alpaca`, colorStore, alpacaList );
 
     this.attributeStore.speed = 0.5 + ( Math.random() * 0.25 );
     this.attributeStore.logic = 0.5 + ( Math.random() * 0.25 );
     this.attributeStore.power = 0.5 + ( Math.random() * 0.25 );
-
-    alpacaList.push( this );
 
   }
 

@@ -2,24 +2,39 @@ function see () {
 
   var { registeredListStore } = this.barn,
     { awarenessStore } = this,
-    { logic } = this.attributeStore;
+    { logic } = this.attributeStore,
+    perceptionDistance = 25 * logic;
 
   for ( let key in registeredListStore ) {
 
     let list = registeredListStore[ key ],
-      king = list[ 0 ];
+      king = list[ 0 ] !== this ? list[ 0 ] : list[ 1 ],
+      kDiffX = Math.abs( king.x - this.x ),
+      kDiffY = Math.abs( king.y - this.y ),
+      cDiffX, cDiffY;
 
-    // Get closest item
-    list.forEach( chal => {
-      if ( chal === this ) { return; }
-      if ( Math.abs( chal.x - this.x ) + Math.abs( chal.y - this.y ) < Math.abs( king.x - this.x ) + Math.abs( king.y - this.y ) ) {
-        king = chal;
-      }
-    } );
+    if ( typeof king !== `undefined` ) {
+
+      // Get closest item
+      list.forEach( chal => {
+
+        if ( chal === this ) { return; }
+
+        cDiffX = Math.abs( chal.x - this.x );
+        cDiffY = Math.abs( chal.y - this.y );
+
+        if ( cDiffX + cDiffY < kDiffX + kDiffY ) {
+          king = chal;
+          kDiffX = cDiffX;
+          kDiffY = cDiffY;
+        }
+      } );
+
+    }
 
     // If within perception range
     awarenessStore[ key ] = null;
-    if ( typeof king !== `undefined` && king !== this && Math.abs( king.x - this.x ) + Math.abs( king.y - this.y ) < 25 * logic ) {
+    if ( typeof king !== `undefined` && kDiffX + kDiffY < perceptionDistance ) {
       awarenessStore[ key ] = king;
     }
   }

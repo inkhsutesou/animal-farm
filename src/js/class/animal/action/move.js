@@ -12,9 +12,10 @@ function step ( self, ... etc ) {
 
     let { knowledgeStore, attributeStore } = self,
       { logic } = attributeStore,
-      { localeList } = knowledgeStore;
+      { localeList } = knowledgeStore,
+      memory = Math.floor( logic * 5 );
 
-    while ( localeList.length > Math.floor( logic * 5 ) ) {
+    while ( localeList.length > memory ) {
       localeList.shift();
     }
     localeList.push( [ xDes, yDes ] );
@@ -45,7 +46,7 @@ function step ( self, ... etc ) {
   self.element.setAttribute( `data-face`, faceString );
   self.setPosition( xSet, ySet );
 
-  setTimeout( function () { step( self, ... etc ) }, 30 );
+  setTimeout( () => step( self, ... etc ), 30 );
 
   return this;
 }

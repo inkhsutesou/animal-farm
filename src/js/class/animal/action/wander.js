@@ -30,11 +30,6 @@ function wander () {
   modX += this.x;
   modY += this.y;
 
-
-  if ( this.__isBeyondBoundary( modX ) || this.__isBeyondBoundary( modY ) ) {
-    console.log( this.name, `thishappened ${ modX } ${ modY }` );
-  }
-
   modX *= this.__isBeyondBoundary( modX ) ? -1 : 1;
   modY *= this.__isBeyondBoundary( modY ) ? -1 : 1;
 

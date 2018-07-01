@@ -9,17 +9,11 @@ class Emu extends Animal {
 
   constructor () {
 
-    super();
-
-    this.element.classList.add( `emu` );
-    this.colorStore = colorStore;
-    this.relativeList = emuList;
+    super( `emu`, colorStore, emuList );
 
     this.attributeStore.speed = 0.5 + ( Math.random() * 0.40 );
     this.attributeStore.logic = 0.5 + ( Math.random() * 0.10 );
     this.attributeStore.power = 0.5 + ( Math.random() * 0.25 );
-
-    emuList.push( this );
 
   }
 

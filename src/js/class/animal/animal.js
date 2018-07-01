@@ -5,11 +5,17 @@ var { Item } = require( `./../item.js` ),
 
 class Animal extends Item {
 
-  constructor () {
+  constructor ( animalString = `NONE`, colorStore, relativeList = [] ) {
 
     super();
 
     this.element = new AnimalItem();
+
+    this.element.classList.add( animalString );
+    this.colorStore = colorStore;
+    this.relativeList = relativeList;
+
+    relativeList.push( this );
 
     this.setSize( 5 );
 
@@ -32,7 +38,6 @@ class Animal extends Item {
     }
 
     this.name = null;
-    this.type = null;
     this.born = Date.now();
 
     this.setIsAbleParent( false );

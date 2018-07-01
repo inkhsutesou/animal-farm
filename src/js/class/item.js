@@ -1,11 +1,4 @@
-var config = require( `./../config.js` ),
-
- directionList = [
-  // y -1,   0,   1
-    [ 315, 270, 225 ], // -1
-    [   0, 225, 180 ], // 0
-    [  45,  90, 135 ]  // 1 x
-  ];
+var config = require( `./../config.js` );
 
 class Item {
 
@@ -14,12 +7,9 @@ class Item {
     this.x = 0;
     this.y = 0;
 
+    this.name = ``;
     this.log = ``;
 
-  }
-
-  __directionList ( x, y ) {
-    return directionList[ ++ x ][ ++ y ];
   }
 
   __isBeyondBoundary ( num ) {
@@ -79,6 +69,11 @@ class Item {
 
     return result;
 
+  }
+
+  setName ( name ) {
+    this.name = name;
+    return this;
   }
 
   setPosition ( x = this.x, y = this.y ) {
