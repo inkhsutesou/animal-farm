@@ -10,9 +10,15 @@ turf-item {
   --expo: 80%;
   --color: hsla( 090, 065%, 015%, 1.0 );
 
+  --posX: 0;
+  --posY: 0;
+
   display: inline-block;
   position: absolute;
   overflow: hidden;
+
+  left: calc( var( --posX ) * 1% );
+  top: calc( var( --posY ) * 1% );
 
   height: var( --height );
   width: var( --width );

@@ -4,14 +4,20 @@ barn-item {
   --sat: 050%;
   --lum: 040%;
 
-  --color: hsla( var( --hue ), var( --sat ), var( --lum ), 1.0 );
+  --color: hsla( var( --hue ), calc( var( --sat ) * 1% ), calc( var( --lum ) * 1% ), 1.0 );
   --shade: hsla( var( --hue ), 050%, 035%, 1.0 );
 
   --size: 20vmin;
   --sizeStatic: calc( var( --size ) * 1vmin );
 
+  --posX: 0;
+  --posY: 0;
+
   position: absolute;
   display: block;
+
+  left: calc( var( --posX ) * 1% );
+  top: calc( var( --posY ) * 1% );
 
   height: var( --sizeStatic );
   width: calc( var( --sizeStatic ) * 2 );

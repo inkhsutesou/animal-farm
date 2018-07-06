@@ -1,10 +1,17 @@
 animal-item {
 
+  --posX: 0;
+  --posY: 0;
+  --sizeStatic: calc( var( --size ) * 1vmin );
+
+  --color: hsla( var( --hue ), calc( var( --sat ) * 1% ), calc( var( --lum ) * 1% ), 1.0 );
+
   position: absolute;
   display: block;
   z-index: 10;
 
-  --sizeStatic: calc( var( --size ) * 1vmin );
+  left: calc( var( --posX ) * 1% );
+  top: calc( var( --posY ) * 1% );
 
   height: var( --sizeStatic );
   width: var( --sizeStatic );

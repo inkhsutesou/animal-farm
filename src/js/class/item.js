@@ -94,8 +94,8 @@ class Item {
         document.body.appendChild( this.element );
       }
 
-      this.element.style.left = `${ x }%`;
-      this.element.style.top = `${ y }%`;
+      this.element.style.setProperty( `--posX`, x );
+      this.element.style.setProperty( `--posY`, y );
 
       this.element.style.zIndex = Math.floor( y );
     }
@@ -118,9 +118,9 @@ class Item {
       : this.lum || 0;
 
     if ( this.element !== null ) {
-      this.element.style.setProperty( `--hue`, `${ this.hue }` );
-      this.element.style.setProperty( `--sat`, `${ this.sat }%` );
-      this.element.style.setProperty( `--lum`, `${ this.lum }%` );
+      this.element.style.setProperty( `--hue`, this.hue );
+      this.element.style.setProperty( `--sat`, this.sat );
+      this.element.style.setProperty( `--lum`, this.lum );
     }
 
     return this;
@@ -128,7 +128,7 @@ class Item {
 
   setSize ( size = 20 ) {
     if ( this.element !== null ) {
-      this.element.style.setProperty( `--size`, `${ size }` );
+      this.element.style.setProperty( `--size`, size );
     }
     this.size = size;
     return this;

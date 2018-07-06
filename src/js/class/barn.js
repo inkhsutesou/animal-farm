@@ -13,7 +13,6 @@ class Barn extends Item {
     this.element = new BarnItem();
     this.colorStore = colorStore;
 
-    this.name = null;
     this
       .setColor()
       .setSize( 20 );
