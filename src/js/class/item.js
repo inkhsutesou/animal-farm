@@ -15,6 +15,8 @@ class Item {
 
     this.element = null;
 
+    this.instanceTime = Date.now();
+
   }
 
   __isBeyondBoundary ( num ) {

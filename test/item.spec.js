@@ -17,6 +17,12 @@ describe( "An item", () => {
     expect( typeof item.size ).toEqual( `number` );
   } );
 
+  it( `should have an instance time`, () => {
+    let item = new Item();
+    expect( typeof item.instanceTime ).toEqual( `number` );
+    expect( item.instanceTime > 1531148110811 ).toBe( true );
+  } );
+
   it( `should have a directional face`, () => {
     let item = new Item();
     expect( typeof item.face ).toEqual( `string` );

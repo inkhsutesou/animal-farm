@@ -18,7 +18,6 @@ class Barn extends Item {
       .setSize( 20 );
 
     this.registeredListStore = {};
-    this.raised = Date.now();
 
   }
 
