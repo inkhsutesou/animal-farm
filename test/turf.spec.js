@@ -1,4 +1,4 @@
-var { Turf, TurfItem, turfList } = require( `../src/js/class/turf.js` );
+var { Turf, TurfItem, turfList } = require( `../src/js/class/turf/turf.js` );
 
 describe( "Turf", () => {
 

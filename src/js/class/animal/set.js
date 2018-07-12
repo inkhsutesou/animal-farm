@@ -3,9 +3,14 @@ function setBarn ( barn ) {
   return this;
 }
 
-function setIsAbleParent ( bool ) {
+function setMode ( string = `auto` ) {
+  this.mode = string;
+  return this;
+}
+
+function setIsAbleParent ( bool = false ) {
   this.isAbleParent = bool;
   return this;
 }
 
-module.exports = { setBarn, setIsAbleParent };
+module.exports = { setBarn, setMode, setIsAbleParent };

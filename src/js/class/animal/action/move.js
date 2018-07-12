@@ -21,7 +21,7 @@ function step ( self, ... etc ) {
     localeList.push( [ xDes, yDes ] );
     self.element.classList.remove( `scoot` );
 
-    return self.go();
+    return self.mode === `auto` ? self.go() : self;
   }
 
   let { speed } = self.attributeStore,

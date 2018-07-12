@@ -11,6 +11,8 @@ class Animal extends Item {
 
     this.element = new AnimalItem();
 
+    this.mode = `auto`;
+
     this.element.classList.add( animalString );
     this.colorStore = colorStore;
     this.relativeList = relativeList;
@@ -38,7 +40,6 @@ class Animal extends Item {
     }
 
     this.name = null;
-    this.born = Date.now();
 
     this.setIsAbleParent( false );
     setTimeout( () => this.setIsAbleParent( true ), config.birthToAbleParentTime );
@@ -63,4 +64,4 @@ Object.assign( Animal.prototype,
   require( `./action/eat.js` )
 );
 
-module.exports = { Animal, animalList };
+module.exports = { Animal, AnimalItem, animalList };

@@ -2,12 +2,12 @@ function __friendStep ( animal ) {
 
   if ( !this.__hasReached( animal.x, animal.y ) ) {
     this.element.classList.remove( `heart` );
-    return this.go();
+    return this.mode === `auto` ? this.go() : this;
   }
 
   if ( this.mannerismStore.friend > 1 ) {
     this.element.classList.remove( `heart` );
-    return this.go();
+    return this.mode === `auto` ? this.go() : this;
   }
 
   this.mannerismStore.friend += 0.01;

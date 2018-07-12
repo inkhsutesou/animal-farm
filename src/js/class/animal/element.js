@@ -1,45 +1,49 @@
-class AnimalItem extends HTMLElement {
+if ( customElements.get( `animal-item` ) === undefined ) {
 
-  constructor () {
+  class AnimalItem extends HTMLElement {
 
-    super();
+    constructor () {
 
-    this.innerHTML = `
-      <talk-item></talk-item>
-      <body-item>
+      super();
 
-        <limb-item></limb-item>
-        <limb-item></limb-item>
+      this.innerHTML = `
+        <talk-item></talk-item>
+        <body-item>
 
-        <neck-item>
-          <head-item>
-            <ears-item></ears-item>
-            <ears-item></ears-item>
-            <face-item>
-              <eyes-item></eyes-item>
-              <eyes-item></eyes-item>
-              <nose-item></nose-item>
-              <lips-item></lips-item>
-            </face-item>
-          </head-item>
-        </neck-item>
-
-        <rump-item>
-          <tail-item></tail-item>
           <limb-item></limb-item>
           <limb-item></limb-item>
-        </rump-item>
 
-      </body-item>
-    `;
+          <neck-item>
+            <head-item>
+              <ears-item></ears-item>
+              <ears-item></ears-item>
+              <face-item>
+                <eyes-item></eyes-item>
+                <eyes-item></eyes-item>
+                <nose-item></nose-item>
+                <lips-item></lips-item>
+              </face-item>
+            </head-item>
+          </neck-item>
+
+          <rump-item>
+            <tail-item></tail-item>
+            <limb-item></limb-item>
+            <limb-item></limb-item>
+          </rump-item>
+
+        </body-item>
+      `;
+
+    }
+
+    connectedCallback () {
+
+    }
 
   }
 
-  connectedCallback () {
-
-  }
-
+  customElements.define( `animal-item`, AnimalItem );
 }
 
-customElements.define( `animal-item`, AnimalItem );
-module.exports = { AnimalItem };
+module.exports = { AnimalItem : customElements.get( `animal-item` ) };

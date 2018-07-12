@@ -1,5 +1,9 @@
 function see () {
 
+  if ( !this.barn ) {
+    return;
+  }
+
   var { registeredListStore } = this.barn,
     { awarenessStore } = this,
     { logic } = this.attributeStore,

@@ -1,4 +1,5 @@
-var { Item } = require( `./item.js` ),
+var { Item } = require( `../item.js` ),
+  { TurfItem } = require( `./element.js` ),
   turfList = [];
 
 class Turf extends Item {
@@ -7,7 +8,7 @@ class Turf extends Item {
 
     super();
 
-    this.element = new TurfItem();
+    this.element = document.createElement( `turf-item` );
     this.setGrowth();
     this.setSize( 2 );
     turfList.push( this );
@@ -65,19 +66,4 @@ class Turf extends Item {
   }
 }
 
-class TurfItem extends HTMLElement {
-
-  constructor () {
-
-    super();
-
-  }
-
-  connectedCallback () {
-
-  }
-
-}
-
-customElements.define( `turf-item`, TurfItem );
 module.exports = { Turf, TurfItem, turfList };

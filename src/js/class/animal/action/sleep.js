@@ -4,9 +4,8 @@ function sleep () {
 
     this.mannerismStore.energy = 1;
     this.element.classList.remove( `sleep` );
-    this.go();
 
-    return;
+    return this.mode === `auto` ? this.go() : this;
   }
 
   this.element.classList.add( `sleep` );

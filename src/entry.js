@@ -4,7 +4,7 @@ import './css/style.scss';
 var { Alpaca, alpacaList } = require( `./js/class/animal/library/alpaca.js` ),
   { Emu, emuList } = require( `./js/class/animal/library/emu.js` ),
   { Pig, pigList } = require( `./js/class/animal/library/pig.js` ),
-  { Turf, turfList } = require( `./js/class/turf.js` ),
+  { Turf, turfList } = require( `./js/class/turf/turf.js` ),
   { animalList } = require( `./js/class/animal/animal.js` ),
   { Barn } = require( `./js/class/barn.js` ),
 
