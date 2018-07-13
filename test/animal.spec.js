@@ -2,6 +2,8 @@ var { Animal, AnimalItem, animalList } = require( `../src/js/class/animal/animal
   { Pig, pigList } = require( `../src/js/class/animal/library/pig.js` ),
   { Emu, emuList } = require( `../src/js/class/animal/library/emu.js` ),
   { Turf, TurfItem, turfList } = require( `../src/js/class/turf/turf.js` ),
+  { Barn, BarnItem } = require( `../src/js/class/barn/barn.js` ),
+
   config = require( `../src/js/config.js` );
 
 describe( `An Animal`, () => {
@@ -374,45 +376,82 @@ describe( `An Animal`, () => {
 
     it( `grow tired`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      jasmine.clock().install();
 
-      expect( true ).toBe( false );
+      let waffle = new Emu();
+      waffle.mannerismStore.energy = 1;
+      expect( waffle.mannerismStore.energy ).toBe( 1 );
+      waffle.go();
+      jasmine.clock().tick( 1000 );
+      expect( waffle.mannerismStore.energy ).toBeLessThan( 1 );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `grow hungry`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      jasmine.clock().install();
 
-      expect( true ).toBe( false );
+      let kevin = new Emu();
+      kevin.mannerismStore.hunger = 1;
+      expect( kevin.mannerismStore.hunger ).toBe( 1 );
+      kevin.go();
+      jasmine.clock().tick( 1000 );
+      expect( kevin.mannerismStore.hunger ).toBeLessThan( 1 );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `grow lonely`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      jasmine.clock().install();
 
-      expect( true ).toBe( false );
+      let pepper = new Emu();
+      pepper.mannerismStore.friend = 1;
+      expect( pepper.mannerismStore.friend ).toBe( 1 );
+      pepper.go();
+      jasmine.clock().tick( 1000 );
+      expect( pepper.mannerismStore.friend ).toBeLessThan( 1 );
+
+      jasmine.clock().uninstall();
 
     } );
 
-    it( `look at its surroundings`, () => {
+    fit( `look at its surroundings`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      let barn = new Barn(),
+        oliver = new Pig(),
+        kevin = new Emu(),
+        turf = new Turf();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `turf`, turfList )
+        .registerList( `pig`, pigList )
+        .registerList( `emu`, emuList )
+        .registerList( `animal`, animalList );
+
+      oliver
+        .setPosition( 25, 25 )
+        .setBarn( barn );
+
+      kevin
+        .setPosition( 25, 25 )
+        .setBarn( barn );
+
+      turf
+        .setPosition( 25, 25 );
+
+      expect( oliver.awarenessStore.emu ).toBe( undefined );
+
+      oliver.see();
 
     } );
 
@@ -510,7 +549,7 @@ describe( `An Animal`, () => {
 
     it( `barn`, () => {
 
-      let barn = {},
+      let barn = new Barn(),
         pepper = new Pig();
 
       expect( pepper.barn ).toBe( undefined );

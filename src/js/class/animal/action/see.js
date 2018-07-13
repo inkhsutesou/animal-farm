@@ -11,8 +11,13 @@ function see () {
 
   for ( let key in registeredListStore ) {
 
-    let list = registeredListStore[ key ],
-      king = list[ 0 ] !== this ? list[ 0 ] : list[ 1 ],
+    let list = registeredListStore[ key ];
+
+    if ( list.length === 1 && list[ 0 ] === this ) {
+      continue;
+    }
+
+    let king = list[ 0 ] === this ? list[ 1 ] : list[ 0 ],
       kDiffX = Math.abs( king.x - this.x ),
       kDiffY = Math.abs( king.y - this.y ),
       cDiffX, cDiffY;

@@ -6,7 +6,7 @@ var { Alpaca, alpacaList } = require( `./js/class/animal/library/alpaca.js` ),
   { Pig, pigList } = require( `./js/class/animal/library/pig.js` ),
   { Turf, turfList } = require( `./js/class/turf/turf.js` ),
   { animalList } = require( `./js/class/animal/animal.js` ),
-  { Barn } = require( `./js/class/barn.js` ),
+  { Barn } = require( `./js/class/barn/barn.js` ),
 
   barn = new Barn();
 

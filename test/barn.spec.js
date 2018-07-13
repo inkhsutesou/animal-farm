@@ -1,4 +1,4 @@
-var { Barn, BarnItem } = require( `../src/js/class/barn.js` );
+var { Barn, BarnItem } = require( `../src/js/class/barn/barn.js` );
 
 describe( "Barn", () => {
 

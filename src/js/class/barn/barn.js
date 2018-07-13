@@ -1,4 +1,5 @@
-var { Item } = require( `./item.js` )
+var { Item } = require( `./../item.js` ),
+  { BarnItem } = require( `./element.js` ),
   hueList = [ [ 0, 30 ] ],
   satList = [ [ 40, 60 ] ],
   lumList = [ [ 30, 50 ] ],
@@ -10,7 +11,7 @@ class Barn extends Item {
 
     super();
 
-    this.element = new BarnItem();
+    this.element = document.createElement( `barn-item` );
     this.colorStore = colorStore;
 
     this
@@ -28,29 +29,4 @@ class Barn extends Item {
 
 }
 
-class BarnItem extends HTMLElement {
-
-  constructor () {
-
-    super();
-
-    this.innerHTML = `
-      <face-item>
-        <door-item></door-item>
-        <loft-item></loft-item>
-      </face-item>
-      <wall-item></wall-item>
-      <roof-item></roof-item>
-      <roof-item></roof-item>
-    `;
-
-  }
-
-  connectedCallback () {
-
-  }
-
-}
-
-customElements.define( `barn-item`, BarnItem );
 module.exports = { Barn, BarnItem };
