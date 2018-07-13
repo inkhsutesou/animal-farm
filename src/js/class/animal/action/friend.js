@@ -6,6 +6,7 @@ function __friendStep ( animal ) {
   }
 
   if ( this.mannerismStore.friend > 1 ) {
+    this.mannerismStore.friend = 1;
     this.element.classList.remove( `heart` );
     return this.mode === `auto` ? this.go() : this;
   }

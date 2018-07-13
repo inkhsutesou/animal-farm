@@ -329,18 +329,44 @@ describe( `An Animal`, () => {
 
     } );
 
-    fit( `be a good friend :3`, () => {
+    it( `be a good friend :3`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      jasmine.clock().install();
 
-      expect( true ).toBe( false );
+      let pepper = new Pig().setMode( `manual` ),
+        waffle = new Emu().setMode( `manual` );
+
+      expect( waffle.mannerismStore.friend ).toBe( 0 );
+      expect( waffle.element.classList ).not.toContain( `heart` );
+
+      expect( pepper.mannerismStore.friend ).toBe( 0 );
+      expect( pepper.element.classList ).not.toContain( `heart` );
+
+      waffle.friend( pepper );
+      pepper.friend( waffle );
+
+      expect( waffle.element.classList ).toContain( `heart` );
+      expect( pepper.element.classList ).toContain( `heart` );
+
+      jasmine.clock().tick( 10 );
+
+      expect( waffle.mannerismStore.friend ).not.toBe( 0 );
+      expect( waffle.element.classList ).toContain( `heart` );
+
+      expect( pepper.mannerismStore.friend ).not.toBe( 0 );
+      expect( pepper.element.classList ).toContain( `heart` );
+
+      jasmine.clock().tick( 10000 );
+
+      expect( waffle.mannerismStore.friend ).toBe( 1 );
+      expect( waffle.element.classList ).not.toContain( `heart` );
+
+      expect( pepper.mannerismStore.friend ).toBe( 1 );
+      expect( pepper.element.classList ).not.toContain( `heart` );
+
+      jasmine.clock().uninstall();
 
     } );
-
-
 
   } );
 
@@ -484,23 +510,42 @@ describe( `An Animal`, () => {
 
     it( `barn`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      let barn = {},
+        pepper = new Pig();
 
-      expect( true ).toBe( false );
+      expect( pepper.barn ).toBe( undefined );
+
+      pepper.setBarn( barn );
+
+      expect( pepper.barn ).toBe( barn );
 
     } );
 
     it( `ability to parent`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      let kevin = new Emu();
 
-      expect( true ).toBe( false );
+      expect( kevin.isAbleParent ).toBe( false );
+
+      kevin.setIsAbleParent( true );
+
+      expect( kevin.isAbleParent ).toBe( true );
+
+    } );
+
+    it( `mode`, () => {
+
+      let kevin = new Emu();
+
+      expect( kevin.mode ).toBe( `auto` );
+
+      kevin.setMode( `manual` );
+
+      expect( kevin.mode ).toBe( `manual` );
+
+      kevin.setMode( `hybrid` );
+
+      expect( kevin.mode ).toBe( `hybrid` );
 
     } );
 
