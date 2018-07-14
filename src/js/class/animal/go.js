@@ -22,19 +22,18 @@ function go () {
 
     decision = Math.random();
 
-  if ( !this.isAbleParent ) {
-
-    this.setIsAbleParent( true );
-
-    mannerismStore.hunger =
-    mannerismStore.energy =
-    mannerismStore.friend = 0;
-
-  }
+  this.log( `Decision : ${ decision } | hungerChance ${ hungerChance } | energyChance ${ energyChance } | friendChance ${ friendChance }` );
 
   if ( this.isAbleParent && hunger + energy + friend > 2.9 ) {
 
     if ( this.relativeList.length <= config.populationLimit ) {
+
+      mannerismStore.hunger =
+      mannerismStore.energy =
+      mannerismStore.friend = 0;
+
+      this.setIsAbleParent( false );
+      setTimeout( () => this.setIsAbleParent( true ), config.birthToAbleParentTime );
 
       let child = new this.constructor()
         .setPosition( this.x, this.y )
@@ -47,8 +46,6 @@ function go () {
 
     }
 
-    this.setIsAbleParent( false );
-
     return this
       .move( 100 - this.x, 100 - this.y );
 
@@ -58,9 +55,7 @@ function go () {
 
     // Find food, eat food
     case decision < hungerChance :
-      this.log += `
-        Find food, eat food
-      `;
+      this.log( `Find food, eat food` );
       if ( !turf ) {
         return this.wander();
       }
@@ -72,17 +67,13 @@ function go () {
 
     // Sleep
     case decision < hungerChance + energyChance :
-      this.log += `
-        Sleep
-      `;
+      this.log( `Sleep` );
       this.sleep();
     break;
 
     // Find friend, be friend
     case decision < hungerChance + energyChance + friendChance :
-      this.log += `
-        Find friend, be friend
-      `;
+      this.log( `Find friend, be friend` );
       if ( !animal ) {
         return this.wander();
       }
@@ -94,6 +85,8 @@ function go () {
 
     default :
       console.log( this.name, `This should not have happened, check Animal:go()` );
+      console.log( decision, hungerChance, energyChance, friendChance );
+      console.log( this.logText );
 
   }
 

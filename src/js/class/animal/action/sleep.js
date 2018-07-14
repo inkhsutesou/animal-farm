@@ -9,6 +9,7 @@ function sleep () {
   }
 
   this.element.classList.add( `sleep` );
+  this.activity = `sleep`;
   this.mannerismStore.energy += this.attributeStore.power * 0.01;
 
   setTimeout( () => this.sleep(), 30 );

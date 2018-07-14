@@ -12,6 +12,7 @@ function eat ( turf ) {
   }
 
   this.element.classList.add( `munch` );
+  this.activity = `eat`;
 
   turf.setGrowth( turf.growth - 0.025 );
   this.mannerismStore.hunger += 0.01;

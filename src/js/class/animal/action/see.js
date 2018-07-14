@@ -17,6 +17,10 @@ function see () {
       continue;
     }
 
+    if ( list.length === 0 ) {
+      continue;
+    }
+
     let king = list[ 0 ] === this ? list[ 1 ] : list[ 0 ],
       kDiffX = Math.abs( king.x - this.x ),
       kDiffY = Math.abs( king.y - this.y ),
@@ -50,9 +54,7 @@ function see () {
 
   Object
     .keys( awarenessStore )
-    .forEach( key => this.log += `
-      See .. ${ key }: ${ awarenessStore[ key ] && awarenessStore[ key ].name }
-    ` );
+    .forEach( key => awarenessStore[ key ] && this.log( `See .. ${ key }: ${ awarenessStore[ key ].name }` ) );
 }
 
 module.exports = { see };

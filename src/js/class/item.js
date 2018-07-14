@@ -11,12 +11,21 @@ class Item {
 
     this.face = ``;
     this.name = ``;
-    this.log = ``;
+    this.logText = ``;
 
     this.element = null;
 
     this.instanceTime = Date.now();
 
+  }
+
+  log ( str ) {
+    this.logText += `
+    ${ str }`;
+    if ( this.logText.length > config.logLength ) {
+      this.logText = this.logText.slice( -config.logLength, this.logText.length );
+    }
+    return this;
   }
 
   __isBeyondBoundary ( num ) {

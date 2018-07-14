@@ -9,7 +9,7 @@ describe( "An item", () => {
 
   it( `should have its own history log`, () => {
     let item = new Item();
-    expect( typeof item.log ).toEqual( `string` );
+    expect( typeof item.logText ).toEqual( `string` );
   } );
 
   it( `should have a size`, () => {
@@ -36,6 +36,15 @@ describe( "An item", () => {
   it( `should have an y coordinate`, () => {
     let item = new Item();
     expect( typeof item.y ).toEqual( `number` );
+  } );
+
+  it( `can update it's log`, () => {
+    let item = new Item(),
+      logMessage = `here is my log message`;
+    expect( item.logText ).toBe( `` );
+    item.log( logMessage );
+    expect( item.logText ).toContain( logMessage );
+
   } );
 
   it( `can set its name`, () => {

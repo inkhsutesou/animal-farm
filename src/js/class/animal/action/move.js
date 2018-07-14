@@ -10,6 +10,10 @@ function step ( self, ... etc ) {
 
   if ( self.__hasReached( xDes, yDes ) ) {
 
+    self
+      .log( `Reached: x:${ xDes }, y:${ yDes }` )
+      .log( `Coordinates: x:${ self.x }, y:${ self.y }` );
+
     let { knowledgeStore, attributeStore } = self,
       { logic } = attributeStore,
       { localeList } = knowledgeStore,
@@ -55,10 +59,10 @@ function step ( self, ... etc ) {
 function move ( ... etc ) {
   this.element.classList.add( `scoot` );
 
-  this.log += `
-    Moving to ..
-      ${ etc.length === 1 ? etc[ 0 ].name : etc }
-  `;
+  this
+    .log( `Moving to ..` )
+    .log( `${ etc.length === 1 ? etc[ 0 ].name : etc }` );
+
   return step( this, ... etc );
 }
 

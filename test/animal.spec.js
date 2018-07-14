@@ -262,31 +262,28 @@ describe( `An Animal`, () => {
 
     it( `wander around`, () => {
 
-      var lastX, lastY;
+      var lastX = 50, lastY = 50;
 
       jasmine.clock().install();
 
       let kevin = new Emu();
       kevin
         .setMode( `manual` )
-        .setPosition( 50, 50 );
+        .setPosition( lastX, lastY );
 
-      expect( kevin.x ).toBe( 50 );
-      expect( kevin.y ).toBe( 50 );
-
-      jasmine.clock().tick( 10 );
-
-      expect( kevin.x ).toBe( 50 );
-      expect( kevin.y ).toBe( 50 );
+      expect( kevin.x ).toBe( lastX );
+      expect( kevin.y ).toBe( lastY );
 
       kevin.wander();
+      jasmine.clock().tick( 10000 );
 
-      expect( kevin.x ).not.toBe( 50 );
-      expect( kevin.y ).not.toBe( 50 );
+      expect( lastX ).not.toBe( kevin.x );
+      expect( lastY ).not.toBe( kevin.y );
 
       lastX = kevin.x;
       lastY = kevin.y;
 
+      kevin.wander();
       jasmine.clock().tick( 10000 );
 
       expect( lastX ).not.toBe( kevin.x );
@@ -419,7 +416,7 @@ describe( `An Animal`, () => {
 
     } );
 
-    fit( `look at its surroundings`, () => {
+    it( `look at its surroundings`, () => {
 
       ( [ animalList, pigList, emuList, turfList ] )
         .some( array => {
@@ -449,97 +446,402 @@ describe( `An Animal`, () => {
       turf
         .setPosition( 25, 25 );
 
+      expect( oliver.awarenessStore.pig ).toBe( undefined );
       expect( oliver.awarenessStore.emu ).toBe( undefined );
+      expect( oliver.awarenessStore.turf ).toBe( undefined );
 
       oliver.see();
+
+      expect( oliver.awarenessStore.pig ).toBe( undefined );
+      expect( oliver.awarenessStore.emu ).toBe( kevin );
+      expect( oliver.awarenessStore.turf ).toBe( turf );
 
     } );
 
     it( `search for unseen food if hungry`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      jasmine.clock().install();
+
+      let barn = new Barn(),
+        waffle = new Emu(),
+        turf = new Turf();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `turf`, turfList );
+
+      waffle.mannerismStore.hunger = 0;
+      waffle.mannerismStore.energy = 1;
+      waffle.mannerismStore.friend = 1;
+
+      waffle
+        .setBarn( barn )
+        .setPosition( 50, 50 );
+
+      turf
+        .setGrowth( 1 )
+        .setPosition( 25, 25 );
+
+      expect( waffle.element.classList ).not.toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `wander` );
+      expect( waffle.awarenessStore.turf ).toBe( undefined );
+      expect( waffle.activity ).toBe( `` );
+
+      waffle.go();
+
+      jasmine.clock().tick( 1000 );
+
+      expect( waffle.element.classList ).toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).toContain( `wander` );
+      expect( waffle.awarenessStore.turf ).toBe( null );
+      expect( waffle.activity ).toBe( `wander` );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `move toward visible food if hungry`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      jasmine.clock().install();
+
+      let barn = new Barn(),
+        waffle = new Emu(),
+        turf = new Turf();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `turf`, turfList );
+
+      waffle.mannerismStore.hunger = 0;
+      waffle.mannerismStore.energy = 1;
+      waffle.mannerismStore.friend = 1;
+
+      waffle
+        .setBarn( barn )
+        .setPosition( 50, 50 );
+
+      turf
+        .setGrowth( 1 )
+        .setPosition( 45, 45 );
+
+      expect( waffle.element.classList ).not.toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `see .. turf` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `find food, eat food` );
+      expect( waffle.awarenessStore.turf ).toBe( undefined );
+      expect( waffle.activity ).toBe( `` );
+      expect( waffle.mannerismStore.hunger ).toBe( 0 );
+
+      waffle.go();
+
+      jasmine.clock().tick( 500 );
+
+      expect( waffle.element.classList ).toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).toContain( `see .. turf` );
+      expect( waffle.logText.toLowerCase() ).toContain( `find food, eat food` );
+      expect( waffle.awarenessStore.turf ).toBe( turf );
+      expect( waffle.activity ).toBe( `` );
+      expect( waffle.mannerismStore.hunger ).not.toBeGreaterThan( 0 );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `eat nearby food if hungry`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      jasmine.clock().install();
+
+      let barn = new Barn(),
+        waffle = new Emu(),
+        turf = new Turf();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `turf`, turfList );
+
+      waffle.mannerismStore.hunger = 0;
+      waffle.mannerismStore.energy = 1;
+      waffle.mannerismStore.friend = 1;
+
+      waffle
+        .setBarn( barn )
+        .setPosition( 50, 50 );
+
+      turf
+        .setGrowth( 1 )
+        .setPosition( 45, 45 );
+
+      expect( waffle.element.classList ).not.toContain( `munch` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `see .. turf` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `find food, eat food` );
+      expect( waffle.awarenessStore.turf ).toBe( undefined );
+      expect( waffle.activity ).toBe( `` );
+      expect( waffle.mannerismStore.hunger ).toBe( 0 );
+
+      waffle.go();
+
+      jasmine.clock().tick( 1500 );
+
+      expect( waffle.element.classList ).toContain( `munch` );
+      expect( waffle.logText.toLowerCase() ).toContain( `see .. turf` );
+      expect( waffle.logText.toLowerCase() ).toContain( `find food, eat food` );
+      expect( waffle.awarenessStore.turf ).toBe( turf );
+      expect( waffle.activity ).toBe( `eat` );
+      expect( waffle.mannerismStore.hunger ).toBeGreaterThan( 0.1 );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `sleep if tired`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      jasmine.clock().install();
 
-      expect( true ).toBe( false );
+      let pepper = new Pig();
+
+      pepper.mannerismStore.hunger = 1;
+      pepper.mannerismStore.energy = 0;
+      pepper.mannerismStore.friend = 1;
+      Object.defineProperty( pepper.mannerismStore, `hunger`, { writable: false } );
+      Object.defineProperty( pepper.mannerismStore, `friend`, { writable: false } );
+
+      pepper
+        .setName( `pepper` );
+
+      expect( pepper.element.classList ).not.toContain( `sleep` );
+      expect( pepper.logText.toLowerCase() ).not.toContain( `sleep` );
+      expect( pepper.activity ).toBe( `` );
+      expect( pepper.mannerismStore.energy ).toBe( 0 );
+
+      pepper.go();
+      Object.defineProperty( pepper.mannerismStore, `hunger`, { writable: true } );
+      Object.defineProperty( pepper.mannerismStore, `friend`, { writable: true } );
+      jasmine.clock().tick( 500 );
+
+      expect( pepper.element.classList ).toContain( `sleep` );
+      expect( pepper.logText.toLowerCase() ).toContain( `sleep` );
+      expect( pepper.activity ).toBe( `sleep` );
+      expect( pepper.mannerismStore.energy ).toBeGreaterThan( 0 );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `search for unseen animals if lonely`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      jasmine.clock().install();
+
+      let barn = new Barn(),
+        waffle = new Emu(),
+        pepper = new Pig();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `pig`, pigList );
+
+      waffle.mannerismStore.hunger = 1;
+      waffle.mannerismStore.energy = 1;
+      waffle.mannerismStore.friend = 0;
+      Object.defineProperty( pepper.mannerismStore, `hunger`, { writable: false } );
+      Object.defineProperty( pepper.mannerismStore, `energy`, { writable: false } );
+
+      waffle
+        .setBarn( barn )
+        .setPosition( 50, 50 );
+
+      pepper
+        .setBarn( barn )
+        .setPosition( 25, 25 );
+
+      expect( waffle.element.classList ).not.toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `wander` );
+      expect( waffle.awarenessStore.pig ).toBe( undefined );
+      expect( waffle.activity ).toBe( `` );
+
+      waffle.go();
+      Object.defineProperty( pepper.mannerismStore, `hunger`, { writable: true } );
+      Object.defineProperty( pepper.mannerismStore, `energy`, { writable: true } );
+
+      jasmine.clock().tick( 1000 );
+
+      expect( waffle.element.classList ).toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).toContain( `wander` );
+      expect( waffle.awarenessStore.pig ).toBe( null );
+      expect( waffle.activity ).toBe( `wander` );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `move toward visible animals if lonely`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      jasmine.clock().install();
+
+      let barn = new Barn(),
+        waffle = new Emu(),
+        pepper = new Pig();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `turf`, turfList )
+        .registerList( `pig`, pigList )
+        .registerList( `animal`, animalList );
+
+      waffle.mannerismStore.hunger = 1;
+      waffle.mannerismStore.energy = 1;
+      waffle.mannerismStore.friend = 0;
+      Object.defineProperty( waffle.mannerismStore, `hunger`, { writable: false } );
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: false } );
+
+      waffle
+        .setBarn( barn )
+        .setPosition( 50, 50 )
+        .setName( `waffle` );
+
+      pepper
+        .setBarn( barn )
+        .setPosition( 45, 45 )
+        .setName( `pepper` );
+
+      expect( waffle.element.classList ).not.toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `see .. pig: pepper` );
+      expect( waffle.logText.toLowerCase() ).not.toContain( `find friend, be friend` );
+      expect( waffle.awarenessStore.pig ).toBe( undefined );
+      expect( waffle.activity ).toBe( `` );
+      expect( waffle.mannerismStore.friend ).toBe( 0 );
+
+      waffle.go();
+      Object.defineProperty( waffle.mannerismStore, `hunger`, { writable: true } );
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: true } );
+
+      jasmine.clock().tick( 500 );
+
+      expect( waffle.element.classList ).toContain( `scoot` );
+      expect( waffle.logText.toLowerCase() ).toContain( `see .. pig: pepper` );
+      expect( waffle.logText.toLowerCase() ).toContain( `find friend, be friend` );
+      expect( waffle.awarenessStore.pig ).toBe( pepper );
+      expect( waffle.activity ).toBe( `` );
+      expect( waffle.mannerismStore.friend ).not.toBeGreaterThan( 0 );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `make friends with nearby animals if lonely`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      jasmine.clock().install();
+
+      let barn = new Barn(),
+        waffle = new Emu(),
+        pepper = new Pig();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `turf`, turfList )
+        .registerList( `pig`, pigList )
+        .registerList( `animal`, animalList );
+
+      waffle.mannerismStore.hunger = 1;
+      waffle.mannerismStore.energy = 1;
+      waffle.mannerismStore.friend = 0;
+      Object.defineProperty( waffle.mannerismStore, `hunger`, { writable: false } );
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: false } );
+
+      waffle
+        .setBarn( barn )
+        .setPosition( 50, 50 )
+        .setName( `waffle` );
+
+      pepper
+        .setBarn( barn )
+        .setPosition( 45, 45 )
+        .setName( `pepper` );
+
+      expect( waffle.element.classList ).not.toContain( `heart` );
+      expect( waffle.awarenessStore.pig ).toBe( undefined );
+      expect( waffle.activity ).toBe( `` );
+      expect( waffle.mannerismStore.friend ).toBe( 0 );
+
+      waffle.go();
+      Object.defineProperty( waffle.mannerismStore, `hunger`, { writable: true } );
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: true } );
+
+      jasmine.clock().tick( 1500 );
+
+      expect( waffle.element.classList ).toContain( `heart` );
+      expect( waffle.awarenessStore.pig ).toBe( pepper );
+      expect( waffle.activity ).toBe( `friend` );
+      expect( waffle.mannerismStore.friend ).toBeGreaterThan( 0.1 );
+
+      jasmine.clock().uninstall();
 
     } );
 
     it( `spawn a child if all of its needs are met`, () => {
 
-      let oliver = new Pig(),
-        pepper = new Pig(),
-        waffle = new Emu(),
-        kevin = new Emu();
+      ( [ animalList, pigList, emuList, turfList ] )
+        .some( array => {
+          while( array.length ) { array.pop() }
+        } );
 
-      expect( true ).toBe( false );
+      let barn = new Barn(),
+        oliver = new Pig();
+
+      barn
+        .setPosition( 50, 50 )
+        .registerList( `pig`, pigList )
+        .registerList( `animal`, animalList );
+
+      oliver.mannerismStore.hunger = 1;
+      oliver.mannerismStore.energy = 1;
+      oliver.mannerismStore.friend = 1;
+
+      oliver
+        .setBarn( barn )
+        .setIsAbleParent( true )
+        .setPosition( 50, 50 )
+        .setName( `oliver` );
+
+      expect( oliver.mannerismStore.hunger ).toBe( 1 );
+      expect( oliver.mannerismStore.energy ).toBe( 1 );
+      expect( oliver.mannerismStore.friend ).toBe( 1 );
+      expect( animalList.length ).toBe( 1 );
+
+      oliver.go();
+
+      expect( oliver.mannerismStore.hunger ).toBeLessThan( 0.1 );
+      expect( oliver.mannerismStore.energy ).toBeLessThan( 0.1 );
+      expect( oliver.mannerismStore.friend ).toBeLessThan( 0.1 );
+      expect( animalList.length ).toBe( 2 );
 
     } );
 

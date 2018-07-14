@@ -20,6 +20,7 @@ function __friendStep ( animal ) {
 function friend ( animal ) {
 
   this.element.classList.add( `heart` );
+  this.activity = `friend`;
 
   return this.__friendStep( animal );
 }

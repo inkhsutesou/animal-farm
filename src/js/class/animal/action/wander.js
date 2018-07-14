@@ -2,43 +2,49 @@ function wander () {
 
   var { knowledgeStore } = this,
     { localeList } = knowledgeStore,
+    modX, modY, destination;
 
-    modX = 0,
-    modY = 0,
+  do {
 
-    destination;
+    modX = 0;
+    modY = 0;
 
-  if ( localeList.length ) {
+    if ( localeList.length ) {
 
-    localeList.forEach( coordList => {
+      localeList.forEach( coordList => {
 
-      var [ x, y ] = coordList;
+        var [ x, y ] = coordList;
 
-      modX += this.x - x;
-      modY += this.y - y;
+        modX += this.x - x;
+        modY += this.y - y;
 
-    } );
+      } );
 
-    modX /= localeList.length;
-    modY /= localeList.length;
+      modX /= localeList.length;
+      modY /= localeList.length;
 
-  }
+    }
 
-  modX += ( ( ( Math.random() - 0.5 ) * 10 ) );
-  modY += ( ( ( Math.random() - 0.5 ) * 10 ) );
+    modX += ( ( ( Math.random() - 0.5 ) * 10 ) );
+    modY += ( ( ( Math.random() - 0.5 ) * 10 ) );
 
-  modX += this.x;
-  modY += this.y;
+    modX += Math.sign( modX ) * 0.5 * this.size;
+    modY += Math.sign( modY ) * 0.5 * this.size;
 
-  modX *= this.__isBeyondBoundary( modX ) ? -1 : 1;
-  modY *= this.__isBeyondBoundary( modY ) ? -1 : 1;
+    modX += this.x;
+    modY += this.y;
 
-  destination = this.__withinBounds( modX, modY );
+    modX *= this.__isBeyondBoundary( modX ) ? -1 : 1;
+    modY *= this.__isBeyondBoundary( modY ) ? -1 : 1;
 
-  this.log += `
-    Wandering ..
-      ${ JSON.stringify( destination ) }
-  `;
+    destination = this.__withinBounds( modX, modY );
+
+  } while ( destination[ 0 ] === this.x && destination[ 1 ] === this.y );
+
+  this
+    .log( `Wandering ..` );
+
+  this.activity = `wander`;
 
   this.move( ... destination );
 

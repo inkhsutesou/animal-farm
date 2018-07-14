@@ -12,6 +12,7 @@ class Animal extends Item {
     this.element = new AnimalItem();
 
     this.mode = `auto`;
+    this.activity = ``;
 
     this.element.classList.add( animalString );
     this.colorStore = colorStore;
