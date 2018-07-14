@@ -478,6 +478,8 @@ describe( `An Animal`, () => {
       waffle.mannerismStore.hunger = 0;
       waffle.mannerismStore.energy = 1;
       waffle.mannerismStore.friend = 1;
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: false } );
+      Object.defineProperty( waffle.mannerismStore, `friend`, { writable: false } );
 
       waffle
         .setBarn( barn )
@@ -493,6 +495,8 @@ describe( `An Animal`, () => {
       expect( waffle.activity ).toBe( `` );
 
       waffle.go();
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: true } );
+      Object.defineProperty( waffle.mannerismStore, `friend`, { writable: true } );
 
       jasmine.clock().tick( 1000 );
 
@@ -525,6 +529,8 @@ describe( `An Animal`, () => {
       waffle.mannerismStore.hunger = 0;
       waffle.mannerismStore.energy = 1;
       waffle.mannerismStore.friend = 1;
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: false } );
+      Object.defineProperty( waffle.mannerismStore, `friend`, { writable: false } );
 
       waffle
         .setBarn( barn )
@@ -542,6 +548,8 @@ describe( `An Animal`, () => {
       expect( waffle.mannerismStore.hunger ).toBe( 0 );
 
       waffle.go();
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: true } );
+      Object.defineProperty( waffle.mannerismStore, `friend`, { writable: true } );
 
       jasmine.clock().tick( 500 );
 
@@ -576,13 +584,15 @@ describe( `An Animal`, () => {
       waffle.mannerismStore.hunger = 0;
       waffle.mannerismStore.energy = 1;
       waffle.mannerismStore.friend = 1;
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: false } );
+      Object.defineProperty( waffle.mannerismStore, `friend`, { writable: false } );
 
       waffle
         .setBarn( barn )
         .setPosition( 50, 50 );
 
       turf
-        .setGrowth( 1 )
+        .setGrowth( 2 )
         .setPosition( 45, 45 );
 
       expect( waffle.element.classList ).not.toContain( `munch` );
@@ -593,6 +603,9 @@ describe( `An Animal`, () => {
       expect( waffle.mannerismStore.hunger ).toBe( 0 );
 
       waffle.go();
+
+      Object.defineProperty( waffle.mannerismStore, `energy`, { writable: true } );
+      Object.defineProperty( waffle.mannerismStore, `friend`, { writable: true } );
 
       jasmine.clock().tick( 1500 );
 
@@ -792,6 +805,7 @@ describe( `An Animal`, () => {
       expect( waffle.mannerismStore.friend ).toBe( 0 );
 
       waffle.go();
+
       Object.defineProperty( waffle.mannerismStore, `hunger`, { writable: true } );
       Object.defineProperty( waffle.mannerismStore, `energy`, { writable: true } );
 
