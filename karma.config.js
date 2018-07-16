@@ -56,7 +56,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [ `ChromeHeadless`, `Chrome` ],
+    browsers: [ `ChromeHeadless` ],
 
     // Pass webpack.config.js to karma
     webpack : require( `./webpack.config.js` ),
