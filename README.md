@@ -10,11 +10,10 @@ npm install
 npm run start
 ```
 
+http://localhost:9000/
 YOU DID IT !!
 
 ## Running the tests
-
-Explain how to run the automated tests for this system
 
 ```
 npm run test
