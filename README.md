@@ -12,8 +12,6 @@ npm run start
 
 http://localhost:9000/
 
-YOU DID IT !!
-
 ## Running the tests
 
 ```
