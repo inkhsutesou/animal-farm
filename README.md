@@ -4,10 +4,9 @@ A farm with animals that go on amazing dining and sleeping adventures together.
 
 ## Demo
 
-https://codepen.io/inkhsutesou/full/JvJeqw/
 ![Animals on a Farm](https://s3-us-west-2.amazonaws.com/i.cdpn.io/1322667.JvJeqw.d8f52866-32bc-4e09-8de9-a607e0e034d9.png)
 
-
+https://codepen.io/inkhsutesou/full/JvJeqw/
 
 ## Getting Started
 
