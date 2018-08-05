@@ -4,7 +4,7 @@ function see () {
     return;
   }
 
-  var { registeredListStore } = this.barn,
+  let { registeredListStore } = this.barn,
     { awarenessStore } = this,
     { logic } = this.attributeStore,
     perceptionDistance = 25 * logic;

@@ -1,11 +1,14 @@
-var config = require( `./../../../config.js` );
+let config = require( `./../../../config.js` );
 
 function step ( self, ... etc ) {
 
+  var xDes, yDes;
+
   if ( typeof etc[ 0 ] !== `number` ) {
-    var { x : xDes, y : yDes } = etc[ 0 ];
+    xDes = etc[ 0 ].x;
+    yDes = etc[ 0 ].y;
   } else {
-    var [ xDes, yDes ] = etc;
+    [ xDes, yDes ] = etc;
   }
 
   if ( self.__hasReached( xDes, yDes ) ) {

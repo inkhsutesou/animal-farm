@@ -1,4 +1,4 @@
-var { Item } = require( `../item.js` ),
+let { Item } = require( `../item.js` ),
   { TurfItem } = require( `./element.js` ),
   turfList = [];
 

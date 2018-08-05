@@ -1,4 +1,4 @@
-var config = require( `./../../config.js` );
+let config = require( `./../../config.js` );
 
 function go () {
 
@@ -6,7 +6,7 @@ function go () {
     .upkeep()
     .see();
 
-  var { awarenessStore, mannerismStore } = this,
+  let { awarenessStore, mannerismStore } = this,
     { hunger, energy, friend } = mannerismStore,
     { animal, turf } = awarenessStore,
 

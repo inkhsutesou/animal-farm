@@ -1,4 +1,4 @@
-var { Item } = require( `./../item.js` ),
+let { Item } = require( `./../item.js` ),
   { BarnItem } = require( `./element.js` ),
   hueList = [ [ 0, 30 ] ],
   satList = [ [ 40, 60 ] ],

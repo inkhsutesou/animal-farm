@@ -1,6 +1,6 @@
 function wander () {
 
-  var { knowledgeStore } = this,
+  let { knowledgeStore } = this,
     { localeList } = knowledgeStore,
     modX, modY, destination;
 
@@ -13,7 +13,7 @@ function wander () {
 
       localeList.forEach( coordList => {
 
-        var [ x, y ] = coordList;
+        let [ x, y ] = coordList;
 
         modX += this.x - x;
         modY += this.y - y;

@@ -1,4 +1,4 @@
-var { Animal } = require( `./../animal.js` ),
+let { Animal } = require( `./../animal.js` ),
   hueList = [ [ 15, 50 ] ],
   satList = [ [ 80, 90 ] ],
   lumList = [ [ 80, 90 ] ],

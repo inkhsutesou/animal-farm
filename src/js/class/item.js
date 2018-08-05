@@ -1,4 +1,4 @@
-var config = require( `./../config.js` );
+let config = require( `./../config.js` );
 
 class Item {
 
@@ -34,7 +34,7 @@ class Item {
 
   __withinBounds ( x, y ) {
 
-    var xMax = 100 - ( this.size * 0.5 ),
+    let xMax = 100 - ( this.size * 0.5 ),
       xMin = 0 + ( this.size * 0.5 ),
       yMax = 100,
       yMin = 0 + this.size;
@@ -50,7 +50,7 @@ class Item {
 
   __hasReached ( x, y ) {
 
-    var tolerance = this.attributeStore.speed * config.stepDistance,
+    let tolerance = this.attributeStore.speed * config.stepDistance,
       halfSize = this.size ? this.size * 0.5 : 0,
       qrtrSize = this.size * 0.25;
       tolerance = 1;
@@ -64,7 +64,7 @@ class Item {
 
   __loopCyclelistWithNum ( num, cycleList ) {
 
-    var result = false;
+    let result = false;
 
     while ( result === false ) {
 

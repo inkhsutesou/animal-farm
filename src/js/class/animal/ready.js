@@ -1,6 +1,6 @@
 function upkeep () {
 
-  var { attributeStore, mannerismStore } = this,
+  let { attributeStore, mannerismStore } = this,
     { power } = attributeStore;
 
   for ( let key in mannerismStore ) {

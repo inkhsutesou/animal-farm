@@ -1,4 +1,4 @@
-var { Item } = require( `./../item.js` ),
+let { Item } = require( `./../item.js` ),
   { AnimalItem } = require( `./element.js` ),
   config = require( `./../../config.js` ),
   animalList = [];
