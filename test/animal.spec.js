@@ -1,8 +1,8 @@
-var { Animal, AnimalItem, animalList } = require( `../src/js/class/animal/animal.js` ),
+var { Animal, animalList } = require( `../src/js/class/animal/animal.js` ),
   { Pig, pigList } = require( `../src/js/class/animal/library/pig.js` ),
   { Emu, emuList } = require( `../src/js/class/animal/library/emu.js` ),
-  { Turf, TurfItem, turfList } = require( `../src/js/class/turf/turf.js` ),
-  { Barn, BarnItem } = require( `../src/js/class/barn/barn.js` ),
+  { Turf, turfList } = require( `../src/js/class/turf/turf.js` ),
+  { Barn } = require( `../src/js/class/barn/barn.js` ),
 
   config = require( `../src/js/config.js` );
 
@@ -12,7 +12,7 @@ describe( `An Animal`, () => {
 
     it( `should have an animal element`, () => {
       let animal = new Animal();
-      expect( animal.element.constructor ).toEqual( AnimalItem );
+      expect( animal.element.nodeName.toLowerCase() ).toEqual( `animal-item` );
     } );
 
     it( `should have a size number`, () => {

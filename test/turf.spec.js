@@ -1,10 +1,10 @@
-var { Turf, TurfItem, turfList } = require( `../src/js/class/turf/turf.js` );
+var { Turf, turfList } = require( `../src/js/class/turf/turf.js` );
 
 describe( "Turf", () => {
 
   it( `should have an element`, () => {
     let turf = new Turf();
-    expect( turf.element.constructor ).toEqual( TurfItem );
+    expect( turf.element.nodeName.toLowerCase() ).toEqual( `turf-item` );
   } );
 
   it( `should start with a size property that is a number`, () => {

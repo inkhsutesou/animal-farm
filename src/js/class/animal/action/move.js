@@ -2,7 +2,7 @@ let config = require( `./../../../config.js` );
 
 function step ( self, ... etc ) {
 
-  var xDes, yDes;
+  let xDes, yDes;
 
   if ( typeof etc[ 0 ] !== `number` ) {
     xDes = etc[ 0 ].x;

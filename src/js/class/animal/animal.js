@@ -1,5 +1,5 @@
 let { Item } = require( `./../item.js` ),
-  { AnimalItem } = require( `./element.js` ),
+  { makeAnimalNode } = require( `./element.js` ),
   config = require( `./../../config.js` ),
   animalList = [];
 
@@ -9,7 +9,8 @@ class Animal extends Item {
 
     super();
 
-    this.element = new AnimalItem();
+    this.element = makeAnimalNode();
+    this.element.instanceObject = this;
 
     this.mode = `auto`;
     this.activity = ``;
@@ -65,4 +66,4 @@ Object.assign( Animal.prototype,
   require( `./action/eat.js` )
 );
 
-module.exports = { Animal, AnimalItem, animalList };
+module.exports = { Animal, animalList };

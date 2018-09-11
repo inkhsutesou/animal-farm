@@ -1,10 +1,10 @@
-var { Barn, BarnItem } = require( `../src/js/class/barn/barn.js` );
+var { Barn, makeBarnNode } = require( `../src/js/class/barn/barn.js` );
 
 describe( "Barn", () => {
 
   it( `should have an element`, () => {
     let barn = new Barn();
-    expect( barn.element.constructor ).toEqual( BarnItem );
+    expect( barn.element.nodeName.toLowerCase() ).toEqual( `barn-item` );
   } );
 
   it( `should have a place to store arrays`, () => {

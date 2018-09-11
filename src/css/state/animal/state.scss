@@ -27,6 +27,15 @@ animal-item.sleep {
   }
 }
 
+animal-item.shock {
+  talk-item {
+    opacity: 1;
+    &:after {
+      content: '!!!';
+    }
+  }
+}
+
 animal-item.scoot {
 
   animation-name: scoot;

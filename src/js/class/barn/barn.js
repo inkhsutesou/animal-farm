@@ -1,5 +1,5 @@
 let { Item } = require( `./../item.js` ),
-  { BarnItem } = require( `./element.js` ),
+  { makeBarnNode } = require( `./element.js` ),
   hueList = [ [ 0, 30 ] ],
   satList = [ [ 40, 60 ] ],
   lumList = [ [ 30, 50 ] ],
@@ -11,7 +11,7 @@ class Barn extends Item {
 
     super();
 
-    this.element = document.createElement( `barn-item` );
+    this.element = makeBarnNode();
     this.colorStore = colorStore;
 
     this
@@ -29,4 +29,4 @@ class Barn extends Item {
 
 }
 
-module.exports = { Barn, BarnItem };
+module.exports = { Barn };

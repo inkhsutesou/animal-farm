@@ -1,37 +1,19 @@
-if ( customElements.get( `barn-item` ) === undefined ) {
+function makeBarnNode () {
 
-  class BarnItem extends HTMLElement {
+  let node = document.createElement( `barn-item` );
 
-    constructor () {
+  node.innerHTML = `
+    <face-item>
+      <door-item></door-item>
+      <loft-item></loft-item>
+    </face-item>
+    <wall-item></wall-item>
+    <roof-item></roof-item>
+    <roof-item></roof-item>
+  `;
 
-      super();
+  return node;
 
-      this.isInitialized = false;
-
-    }
-
-    connectedCallback () {
-
-      if ( this.isInitialized ) {
-        return;
-      }
-
-      this.isInitialized = true;
-
-      this.innerHTML = `
-        <face-item>
-          <door-item></door-item>
-          <loft-item></loft-item>
-        </face-item>
-        <wall-item></wall-item>
-        <roof-item></roof-item>
-        <roof-item></roof-item>
-      `;
-    }
-
-  }
-
-  customElements.define( `barn-item`, BarnItem );
 }
 
-module.exports = { BarnItem : customElements.get( `barn-item` ) };
+module.exports = { makeBarnNode };

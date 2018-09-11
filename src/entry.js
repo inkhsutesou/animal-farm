@@ -12,6 +12,76 @@ let { Alpaca, alpacaList } = require( `./js/class/animal/library/alpaca.js` ),
 
 document.body.classList.add( `daynightcycle` );
 
+/**
+ * start prototyping
+ */
+
+document.addEventListener( `mousedown`, event => {
+  switch ( event.target.nodeName.toLowerCase() ) {
+
+    case `body` :
+
+      let posX = Math.round( event.offsetX / document.body.offsetWidth * 100  ),
+        posY = Math.round( event.offsetY / document.body.offsetHeight * 100  );
+
+      new Turf()
+        .setGrowth( 0.1 )
+        .setPosition( posX, posY )
+        .go();
+
+    break;
+
+    case `animal-item` :
+      // event.target.classList.add( `shock` );
+    break;
+
+    default :
+    break;
+
+  }
+
+}, false );
+
+document.addEventListener( `mousemove`, event => {
+  switch ( event.target.nodeName.toLowerCase() ) {
+
+    case `animal-item` :
+
+      // if ( !event.target.classList.contains( `shock` ) ) return;
+
+      // let posX = event.offsetX / document.body.offsetWidth * 100,
+      //   posY = event.offsetY / document.body.offsetHeight * 100;
+
+      // event.target.instanceObject
+      //   .setPosition( posX, posY );
+    break;
+
+    default :
+    break;
+
+  }
+
+}, false );
+
+document.addEventListener( `mouseup`, event => {
+  switch ( event.target.nodeName.toLowerCase() ) {
+
+    case `animal-item` :
+      // event.target.classList.remove( `shock` );
+    break;
+
+    default :
+    break;
+
+  }
+
+}, false );
+
+/**
+ * end prototyping
+ */
+
+
 new Turf()
   .setGrowth( 0.1 )
   .setPosition( 75, 85 )

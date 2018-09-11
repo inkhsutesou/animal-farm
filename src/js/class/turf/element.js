@@ -1,18 +1,6 @@
-if ( customElements.get( `turf-item` ) === undefined ) {
-
-  class TurfItem extends HTMLElement {
-
-    constructor () {
-
-      super();
-
-    }
-
-    connectedCallback () {}
-
-  }
-
-  customElements.define( `turf-item`, TurfItem );
+function makeTurfNode () {
+  let node = document.createElement( `turf-item` );
+  return node;
 }
 
-module.exports = { TurfItem : customElements.get( `turf-item` ) };
+module.exports = { makeTurfNode };

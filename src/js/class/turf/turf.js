@@ -1,5 +1,5 @@
 let { Item } = require( `../item.js` ),
-  { TurfItem } = require( `./element.js` ),
+  { makeTurfNode } = require( `./element.js` ),
   turfList = [];
 
 class Turf extends Item {
@@ -8,7 +8,7 @@ class Turf extends Item {
 
     super();
 
-    this.element = document.createElement( `turf-item` );
+    this.element = makeTurfNode();
     this.setGrowth();
     this.setSize( 2 );
     turfList.push( this );
@@ -66,4 +66,4 @@ class Turf extends Item {
   }
 }
 
-module.exports = { Turf, TurfItem, turfList };
+module.exports = { Turf, turfList };
