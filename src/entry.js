@@ -8,13 +8,43 @@ let { Alpaca, alpacaList } = require( `./js/class/animal/library/alpaca.js` ),
   { animalList } = require( `./js/class/animal/animal.js` ),
   { Barn } = require( `./js/class/barn/barn.js` ),
 
+  Vue = require( `vue` ),
+  statNode = document.createElement( `stat-item` ),
+
   barn = new Barn();
+
+statNode.innerHTML = `
+  <div># of Alpacas {{ alpacaList.length }}</div>
+  <div># of Pigs {{ pigList.length }}</div>
+  <div># of Emu {{ emuList.length }}</div>
+  <div># of Turf {{ turfList.length }}</div>
+`;
+document.body.appendChild( statNode );
 
 document.body.classList.add( `daynightcycle` );
 
 /**
  * start prototyping
  */
+
+//         if ( !this.vue && this.element.nodeName === `ANIMAL-ITEM` ) {
+// console.log( this, this.identification );
+// let self = this;
+// window.isitarace = function () {
+
+
+          var vue = new Vue( {
+            el: `stat-item`,
+            data: {
+              alpacaList,
+              emuList,
+              pigList,
+              turfList
+            }
+          } );
+// }
+
+        // }
 
 document.addEventListener( `mousedown`, event => {
   switch ( event.target.nodeName.toLowerCase() ) {

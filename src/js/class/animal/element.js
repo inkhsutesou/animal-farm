@@ -2,6 +2,10 @@ function makeAnimalNode () {
 
   let node = document.createElement( `animal-item` );
 
+      // {{ mannerismStore.hunger }}
+      // {{ mannerismStore.energy }}
+      // {{ mannerismStore.friend }}
+      // <stat-item>{{ hunger }}</stat-item>
   node.innerHTML = `
     <talk-item></talk-item>
     <body-item>

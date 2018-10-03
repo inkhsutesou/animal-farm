@@ -102,7 +102,9 @@ class Item {
     if ( this.element !== null ) {
 
       if ( this.element.parentNode === null ) {
+
         document.body.appendChild( this.element );
+
       }
 
       this.element.style.setProperty( `--posX`, x );

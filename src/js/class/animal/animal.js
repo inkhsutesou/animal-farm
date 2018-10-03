@@ -1,7 +1,8 @@
 let { Item } = require( `./../item.js` ),
   { makeAnimalNode } = require( `./element.js` ),
   config = require( `./../../config.js` ),
-  animalList = [];
+  animalList = [],
+  animalIteration = 0;
 
 class Animal extends Item {
 
@@ -9,8 +10,12 @@ class Animal extends Item {
 
     super();
 
+    this.identification = `${ animalString }__${ animalIteration }`;
+
     this.element = makeAnimalNode();
     this.element.instanceObject = this;
+    this.element.setAttribute( `data-identification`, this.identification );
+    this.element.setAttribute( `id`, this.identification );
 
     this.mode = `auto`;
     this.activity = ``;
@@ -47,6 +52,7 @@ class Animal extends Item {
     setTimeout( () => this.setIsAbleParent( true ), config.birthToAbleParentTime );
 
     animalList.push( this );
+    animalIteration ++;
 
   }
 

@@ -24,6 +24,12 @@ module.exports = {
     port: 9000
   },
 
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.min.js'
+    }
+  },
+
   module: {
     rules: [
       {
